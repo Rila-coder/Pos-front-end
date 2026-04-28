@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "app/(dashboard)/super-admin/global-settings", "components/common/shared/inventory/InventoryValueHelper"  ],
   "exclude": ["node_modules"]
 }
