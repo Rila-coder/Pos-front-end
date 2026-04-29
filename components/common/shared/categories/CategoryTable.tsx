@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Edit, Trash2, LayoutGrid, Building2, Package } from "lucide-react";
+import { Search, Edit, Trash2, LayoutGrid, Building2, Package, Globe } from "lucide-react";
 import { Button } from "@/components/common/ui/Button";
 import { Input } from "@/components/common/ui/Input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/common/ui/Card";
@@ -12,7 +12,8 @@ export default function CategoryTable({
   categories, 
   role, 
   onEdit, 
-  onDelete 
+  onDelete,
+  branches = []
 }: any) {
   const [search, setSearch] = useState("");
 
@@ -20,12 +21,30 @@ export default function CategoryTable({
     c.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  const getBranchIcon = (branchId: string) => {
+    if (branchId === "all") {
+      return <Globe className="w-3 h-3 text-primary" />;
+    }
+    return <Building2 className="w-3 h-3 text-primary" />;
+  };
+
+  const getBranchDisplay = (category: any) => {
+    if (category.branch === "all") {
+      return "All Branches (Global)";
+    }
+    if (category.branchName) {
+      return category.branchName;
+    }
+    return category.branch || "Unknown";
+  };
+
   return (
     <Card className="shadow-lg border-border bg-card">
       <CardHeader className="pb-0 border-b bg-muted/10">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-3 sm:pb-4">
           <CardTitle className="text-lg sm:text-xl font-black uppercase tracking-tighter flex items-center gap-2 text-foreground">
-            <LayoutGrid className="text-primary w-4 h-4 sm:w-5 sm:h-5"/> {role === 'super-admin' ? "Global Categories" : "Product Categories"}
+            <LayoutGrid className="text-primary w-4 h-4 sm:w-5 sm:h-5"/> 
+            {role === 'super-admin' ? "Global Categories" : "Product Categories"}
           </CardTitle>
           <div className="relative w-full sm:w-72">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3 h-3 sm:w-3.5 sm:h-3.5 text-muted-foreground" />
@@ -44,7 +63,13 @@ export default function CategoryTable({
             <TableHeader>
               <TableRow className="bg-muted/30 border-border">
                 <TableHead className="font-bold text-[9px] sm:text-[10px] uppercase text-foreground">Category Name</TableHead>
-                {role === "super-admin" && <TableHead className="font-bold text-[9px] sm:text-[10px] uppercase text-foreground">Branch</TableHead>}
+                {role === "super-admin" && (
+                  <TableHead className="font-bold text-[9px] sm:text-[10px] uppercase text-foreground">
+                    <div className="flex items-center gap-1">
+                      <Globe className="w-3 h-3" /> Branch Assignment
+                    </div>
+                  </TableHead>
+                )}
                 <TableHead className="font-bold text-[9px] sm:text-[10px] uppercase text-center text-foreground">Linked Products</TableHead>
                 <TableHead className="text-right font-bold text-[9px] sm:text-[10px] uppercase px-4 sm:px-6 text-foreground">Actions</TableHead>
               </TableRow>
@@ -57,8 +82,11 @@ export default function CategoryTable({
                   </TableCell>
                   {role === "super-admin" && (
                     <TableCell>
-                      <div className="flex items-center gap-1 text-[9px] sm:text-[10px] font-bold text-muted-foreground uppercase">
-                        <Building2 className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-primary" /> {cat.branch}
+                      <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] font-bold">
+                        {getBranchIcon(cat.branch)}
+                        <span className={cat.branch === "all" ? "text-primary" : "text-muted-foreground uppercase"}>
+                          {getBranchDisplay(cat)}
+                        </span>
                       </div>
                     </TableCell>
                   )}

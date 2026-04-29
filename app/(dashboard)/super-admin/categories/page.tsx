@@ -7,22 +7,63 @@ import CategoryTable from "@/components/common/shared/categories/CategoryTable";
 import AddCategoryDialog from "@/components/common/shared/categories/AddCategoryDialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/common/ui/Select";
 
-const initialGlobal = [
-  { id: 1, name: "Beverages", branch: "Main Branch", productCount: 150 },
-  { id: 2, name: "Medicine", branch: "Kandy Branch", productCount: 85 },
+// Mock data with branch assignment
+const initialGlobalCategories = [
+  { id: 1, name: "Beverages", branch: "all", productCount: 150, branchName: "All Branches" },
+  { id: 2, name: "Medicine", branch: "kandy", productCount: 85, branchName: "Kandy Branch" },
+  { id: 3, name: "Electronics", branch: "main", productCount: 45, branchName: "Main Branch" },
+  { id: 4, name: "Bakery", branch: "all", productCount: 120, branchName: "All Branches" },
+];
+
+const branches = [
+  { id: "all", name: "All Branches (Global)" },
+  { id: "main", name: "Main Branch" },
+  { id: "kandy", name: "Kandy Branch" },
+  { id: "galle", name: "Galle Branch" },
 ];
 
 export default function SuperAdminCategoriesPage() {
-  const [categories, setCategories] = useState(initialGlobal);
+  const [categories, setCategories] = useState(initialGlobalCategories);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState<any>(null);
+  const [branchFilter, setBranchFilter] = useState("all");
 
   const handleSave = (data: any) => {
     if (data.id) {
-      setCategories(prev => prev.map(c => c.id === data.id ? { ...c, name: data.name } : c));
+      // Update existing category
+      setCategories(prev => prev.map(c => {
+        if (c.id === data.id) {
+          const branchInfo = branches.find(b => b.id === data.branch);
+          return { 
+            ...c, 
+            name: data.name, 
+            branch: data.branch,
+            branchName: branchInfo?.name || (data.branch === "all" ? "All Branches" : "Unknown Branch")
+          };
+        }
+        return c;
+      }));
     } else {
-      setCategories([...categories, { id: Date.now(), name: data.name, branch: "Main Branch", productCount: 0 }]);
+      // Add new category
+      const branchInfo = branches.find(b => b.id === data.branch);
+      setCategories([...categories, { 
+        id: Date.now(), 
+        name: data.name, 
+        branch: data.branch,
+        branchName: branchInfo?.name || (data.branch === "all" ? "All Branches" : "Unknown Branch"),
+        productCount: 0 
+      }]);
     }
+  };
+
+  const filteredCategories = categories.filter(cat => {
+    if (branchFilter === "all") return true;
+    return cat.branch === branchFilter;
+  });
+
+  const getBranchDisplayName = (branchId: string) => {
+    const branch = branches.find(b => b.id === branchId);
+    return branch?.name || (branchId === "all" ? "All Branches" : branchId);
   };
 
   return (
@@ -40,27 +81,39 @@ export default function SuperAdminCategoriesPage() {
       </div>
 
       <div className="bg-card p-3 sm:p-4 rounded-2xl border border-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shadow-sm">
-        <p className="text-[10px] sm:text-xs font-black uppercase text-muted-foreground tracking-widest px-2">Filter Network</p>
-        <Select defaultValue="all">
+        <p className="text-[10px] sm:text-xs font-black uppercase text-muted-foreground tracking-widest px-2">Filter by Branch</p>
+        <Select value={branchFilter} onValueChange={setBranchFilter}>
           <SelectTrigger className="w-full sm:w-64 h-10 sm:h-11 font-bold text-sm">
             <SelectValue placeholder="All Branches" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All Branches</SelectItem>
-            <SelectItem value="main">Main Branch (Colombo)</SelectItem>
-            <SelectItem value="kandy">Kandy Branch</SelectItem>
+            <SelectItem value="all">🌍 All Branches (Global)</SelectItem>
+            <SelectItem value="main">🏢 Main Branch</SelectItem>
+            <SelectItem value="kandy">🏢 Kandy Branch</SelectItem>
+            <SelectItem value="galle">🏢 Galle Branch</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       <CategoryTable 
-        categories={categories} 
+        categories={filteredCategories} 
         role="super-admin" 
-        onEdit={(cat: any) => { setEditingCategory(cat); setIsDialogOpen(true); }} 
-        onDelete={(id: any) => setCategories(prev => prev.filter(c => c.id !== id))} 
+        onEdit={(cat: any) => { 
+          setEditingCategory(cat); 
+          setIsDialogOpen(true); 
+        }} 
+        onDelete={(id: any) => setCategories(prev => prev.filter(c => c.id !== id))}
+        branches={branches}
       />
 
-      <AddCategoryDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} initialData={editingCategory} onSave={handleSave} />
+      <AddCategoryDialog 
+        open={isDialogOpen} 
+        onOpenChange={setIsDialogOpen} 
+        initialData={editingCategory} 
+        onSave={handleSave}
+        showBranchField={true}
+        branches={branches}
+      />
     </div>
   );
 }
