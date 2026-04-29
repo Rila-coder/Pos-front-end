@@ -21,7 +21,7 @@ export default function SuperAdminCustomersPage() {
   return (
     <div className="space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-        <h1 className="text-2xl sm:text-3xl font-black flex items-center gap-2 uppercase tracking-tighter text-foreground">
+        <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2 text-foreground">
           <Building2 className="text-primary w-6 h-6 sm:w-8 sm:h-8"/> Global Customers
         </h1>
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">

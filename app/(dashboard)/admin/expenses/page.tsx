@@ -46,7 +46,7 @@ export default function AdminExpensesPage() {
     <div className="space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-foreground uppercase tracking-tighter">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
             Expenses
           </h1>
           <p className="text-xs sm:text-sm text-muted-foreground font-bold uppercase">

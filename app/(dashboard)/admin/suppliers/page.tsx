@@ -29,7 +29,7 @@ export default function AdminSuppliersPage() {
   return (
     <div className="space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter flex items-center gap-2 text-foreground">
+        <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2 text-foreground">
           <Users className="text-primary w-6 h-6 sm:w-8 sm:h-8" /> Suppliers
         </h1>
         <Button onClick={() => setIsAddOpen(true)} className="bg-primary hover:bg-primary-hover font-black uppercase text-[10px] sm:text-xs h-10 sm:h-12 px-4 sm:px-8">

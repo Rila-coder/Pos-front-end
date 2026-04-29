@@ -65,7 +65,7 @@ export default function SettingsPage() {
         <div className="flex items-center gap-2 sm:gap-3">
           <Settings className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
           <div>
-            <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter text-foreground">Settings</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Settings</h1>
             <p className="text-xs sm:text-sm text-muted-foreground font-medium uppercase">Configure your local station</p>
           </div>
         </div>

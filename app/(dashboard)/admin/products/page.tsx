@@ -10,33 +10,77 @@ import AddProductDialog from "@/components/common/shared/products/AddProductDial
 
 // FULL MOCK DATA INCLUDED
 const adminMockProducts = [
-  { id: 1, sku: "SKU001", name: "Coca Cola 500ml", category: "Beverages", price: 150, stock: 45, status: "active", discount: 5 },
-  { id: 2, sku: "SKU002", name: "White Bread", category: "Food", price: 120, stock: 30, status: "active" },
-  { id: 3, sku: "SKU003", name: "Gaming Headphones", category: "Electronics", price: 2500, stock: 12, status: "active" },
-  { id: 4, sku: "SKU004", name: "Paracetamol 10mg", category: "Medicine", price: 50, stock: 100, status: "active" },
-  { id: 5, sku: "SKU005", name: "Cotton T-Shirt", category: "Clothes", price: 1200, stock: 5, status: "low stock" },
+  {
+    id: 1,
+    sku: "SKU001",
+    name: "Coca Cola 500ml",
+    category: "Beverages",
+    price: 150,
+    stock: 45,
+    status: "active",
+    discount: 5,
+  },
+  {
+    id: 2,
+    sku: "SKU002",
+    name: "White Bread",
+    category: "Food",
+    price: 120,
+    stock: 30,
+    status: "active",
+  },
+  {
+    id: 3,
+    sku: "SKU003",
+    name: "Gaming Headphones",
+    category: "Electronics",
+    price: 2500,
+    stock: 12,
+    status: "active",
+  },
+  {
+    id: 4,
+    sku: "SKU004",
+    name: "Paracetamol 10mg",
+    category: "Medicine",
+    price: 50,
+    stock: 100,
+    status: "active",
+  },
+  {
+    id: 5,
+    sku: "SKU005",
+    name: "Cotton T-Shirt",
+    category: "Clothes",
+    price: 1200,
+    stock: 5,
+    status: "low stock",
+  },
 ];
 
 export default function AdminProductsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const filteredProducts = adminMockProducts.filter((p) =>
-    p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    p.sku.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredProducts = adminMockProducts.filter(
+    (p) =>
+      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.sku.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
     <div className="space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-foreground flex items-center gap-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-2">
             <Package className="text-primary w-6 h-6 sm:w-8 sm:h-8" /> Products
           </h1>
-          <p className="text-xs sm:text-sm text-muted-foreground mt-1">Manage your branch inventory and pricing</p>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+            Manage your branch inventory and pricing
+          </p>
         </div>
 
-        <Button 
+        <Button
           onClick={() => setIsDialogOpen(true)}
           className="bg-primary hover:bg-primary-hover text-white font-bold uppercase text-[10px] sm:text-xs px-4 sm:px-6 h-9 sm:h-11"
         >
@@ -63,10 +107,10 @@ export default function AdminProductsPage() {
       <ProductTable products={filteredProducts} role="admin" />
 
       {/* Shared Dialog Component */}
-      <AddProductDialog 
-        open={isDialogOpen} 
-        onOpenChange={setIsDialogOpen} 
-        role="admin" 
+      <AddProductDialog
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+        role="admin"
       />
     </div>
   );

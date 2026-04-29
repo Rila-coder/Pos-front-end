@@ -43,7 +43,7 @@ export default function AdminEmployeesPage() {
     <div className="space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-foreground uppercase tracking-tighter">Team Management</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Team Management</h1>
           <p className="text-xs sm:text-sm text-muted-foreground font-bold uppercase">Staff performance and payroll</p>
         </div>
         <Button onClick={() => setIsAddOpen(true)} className="bg-primary hover:bg-primary-hover font-black uppercase text-[10px] sm:text-xs h-10 sm:h-12 shadow-xl shadow-primary/20">

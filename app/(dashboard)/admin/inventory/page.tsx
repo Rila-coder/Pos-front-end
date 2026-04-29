@@ -38,7 +38,7 @@ export default function AdminInventoryPage() {
     <div className="space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-foreground uppercase tracking-tighter">Inventory Hub</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Inventory Hub</h1>
           <p className="text-xs sm:text-sm text-muted-foreground font-bold uppercase tracking-tighter">Branch Stock Management</p>
         </div>
         <div className="flex items-center gap-2 sm:gap-3">

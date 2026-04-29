@@ -33,7 +33,7 @@ export default function SuperAdminEmployeesPage() {
   return (
     <div className="space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-        <h1 className="text-2xl sm:text-3xl font-black flex items-center gap-2 uppercase tracking-tighter text-foreground">
+        <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2 text-foreground">
           <ShieldCheck className="text-primary w-6 h-6 sm:w-8 sm:h-8"/> Global Staffing
         </h1>
         <Button onClick={() => setIsAddOpen(true)} className="bg-primary hover:bg-primary-hover font-black uppercase text-[10px] sm:text-xs h-10 sm:h-12 shadow-xl shadow-primary/20">

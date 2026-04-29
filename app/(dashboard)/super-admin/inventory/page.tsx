@@ -47,7 +47,7 @@ export default function SuperAdminInventory() {
   return (
     <div className="space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tighter flex items-center gap-2 text-foreground">
+        <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2 text-foreground">
           <Building2 className="text-primary w-6 h-6 sm:w-8 sm:h-8"/> Global Inventory
         </h1>
         {lowStockCount > 0 && (

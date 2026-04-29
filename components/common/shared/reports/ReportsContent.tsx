@@ -27,7 +27,7 @@ export default function ReportsContent({ role }: { role: "admin" | "super-admin"
   return (
     <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-2xl sm:text-3xl font-black text-foreground uppercase tracking-tighter">
+        <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
           {role === "super-admin" ? "Global Reports" : "Reports"}
         </h1>
         <p className="text-xs sm:text-sm text-muted-foreground font-bold uppercase">

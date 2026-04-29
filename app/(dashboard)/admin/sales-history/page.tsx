@@ -72,9 +72,9 @@ export default function AdminSalesHistoryPage() {
     <div className="space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-foreground uppercase tracking-tighter flex items-center gap-2">
-            <History className="text-primary w-6 h-6 sm:w-8 sm:h-8" /> Sales History
-          </h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-2">
+  <History className="text-primary w-6 h-6 sm:w-8 sm:h-8" /> Sales History
+</h1>
           <p className="text-xs sm:text-sm text-muted-foreground font-bold uppercase tracking-tighter">Branch Audit & Returns</p>
         </div>
         <Button variant="outline" className="font-bold uppercase text-[10px] sm:text-xs h-10 sm:h-12 px-4 sm:px-6">

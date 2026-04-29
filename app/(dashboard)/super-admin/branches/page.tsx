@@ -197,7 +197,7 @@ export default function SuperAdminBranchesPage() {
               <Store className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div>
-              <CardTitle className="text-xl sm:text-2xl font-black tracking-tight uppercase text-foreground">Main Branch</CardTitle>
+              <CardTitle className="text-xl sm:text-2xl font-bold text-foreground">Main Branch</CardTitle>
               <CardDescription className="text-[10px] sm:text-xs">Primary Business Headquarters</CardDescription>
             </div>
           </div>

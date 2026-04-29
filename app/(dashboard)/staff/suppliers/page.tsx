@@ -14,7 +14,7 @@ export default function StaffSuppliersPage() {
 
   return (
     <div className="space-y-4 sm:space-y-6">
-      <h1 className="text-2xl sm:text-3xl font-black flex items-center gap-2 uppercase tracking-tighter text-foreground">
+      <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2 text-foreground">
         <Users className="text-primary w-6 h-6 sm:w-8 sm:h-8" /> Supplier Contacts
       </h1>
       <SupplierTable suppliers={staffSuppliers} searchQuery={query} onSearchChange={setQuery} role="staff" />

@@ -16,7 +16,7 @@ export default function SuperAdminGlobalSettings() {
       <div className="flex items-center gap-2 sm:gap-3">
         <Settings className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
         <div>
-          <h1 className="text-2xl sm:text-4xl font-black uppercase tracking-tighter text-foreground">Global Settings</h1>
+          <h1 className="text-2xl sm:text-4xl font-bold text-foreground">Global Settings</h1>
           <p className="text-xs sm:text-sm text-muted-foreground font-bold uppercase">System-wide configuration</p>
         </div>
       </div>

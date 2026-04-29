@@ -8,26 +8,54 @@ import ProductTable from "@/components/common/shared/products/ProductTable";
 
 // FULL MOCK DATA INCLUDED
 const staffMockProducts = [
-  { id: 1, sku: "SKU001", name: "Coca Cola 500ml", category: "Beverages", price: 150, stock: 45, status: "active" },
-  { id: 2, sku: "SKU002", name: "White Bread", category: "Food", price: 120, stock: 30, status: "active" },
-  { id: 5, sku: "SKU005", name: "Cotton T-Shirt", category: "Clothes", price: 1200, stock: 5, status: "low stock" },
+  {
+    id: 1,
+    sku: "SKU001",
+    name: "Coca Cola 500ml",
+    category: "Beverages",
+    price: 150,
+    stock: 45,
+    status: "active",
+  },
+  {
+    id: 2,
+    sku: "SKU002",
+    name: "White Bread",
+    category: "Food",
+    price: 120,
+    stock: 30,
+    status: "active",
+  },
+  {
+    id: 5,
+    sku: "SKU005",
+    name: "Cotton T-Shirt",
+    category: "Clothes",
+    price: 1200,
+    stock: 5,
+    status: "low stock",
+  },
 ];
 
 export default function StaffProductsPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredProducts = staffMockProducts.filter((p) =>
-    p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    p.sku.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredProducts = staffMockProducts.filter(
+    (p) =>
+      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.sku.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
     <div className="space-y-4 sm:space-y-6">
       <div>
-        <h1 className="text-2xl sm:text-3xl font-black text-foreground flex items-center gap-2">
-          <PackageSearch className="text-primary w-6 h-6 sm:w-8 sm:h-8" /> Inventory Lookup
+        <h1 className="text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-2">
+          <PackageSearch className="text-primary w-6 h-6 sm:w-8 sm:h-8" />{" "}
+          Inventory Lookup
         </h1>
-        <p className="text-xs sm:text-sm text-muted-foreground mt-1">Check stock availability and product details</p>
+        <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+          Check stock availability and product details
+        </p>
       </div>
 
       <Card className="border-border shadow-sm">

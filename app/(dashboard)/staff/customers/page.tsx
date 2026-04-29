@@ -16,7 +16,7 @@ export default function StaffCustomersPage() {
 
   return (
     <div className="space-y-4 sm:space-y-6">
-      <h1 className="text-2xl sm:text-3xl font-black flex items-center gap-2 text-foreground">
+      <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2 text-foreground">
         <Users className="text-primary w-6 h-6 sm:w-8 sm:h-8" /> Customer Directory
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
