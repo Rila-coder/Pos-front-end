@@ -128,7 +128,11 @@ export default function Sidebar({
         { name: "Dashboard", href: "/super-admin", icon: LayoutDashboard },
         { name: "Branches", href: "/super-admin/branches", icon: Building2 },
         { name: "Global POS", href: "/super-admin/pos", icon: ShoppingCart },
-        { name: "Sales History", href: "/super-admin/sales-history", icon: History },
+        {
+          name: "Sales History",
+          href: "/super-admin/sales-history",
+          icon: History,
+        },
         { name: "All Products", href: "/super-admin/products", icon: Package },
         { name: "Categories", href: "/super-admin/categories", icon: Shapes },
         { name: "All Customers", href: "/super-admin/customers", icon: Users },
@@ -221,16 +225,17 @@ export default function Sidebar({
       {/* Overlay for mobile and tablet when sidebar is open */}
       {(isMobile || isTablet) && mobileSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+          className="fixed inset-0 bg-black/50 z-40"
           onClick={closeSidebar}
         />
       )}
-      
+
       <aside
         className={`fixed top-0 left-0 z-50 h-screen transition-all duration-300 ${getSidebarWidth()} ${
-          (isMobile || isTablet) && !mobileSidebarOpen ? "-translate-x-full" : "translate-x-0"
-        } bg-[#1F2937] shadow-2xl`}
-        style={{ backgroundColor: "#1F2937", backgroundImage: "none" }}
+          (isMobile || isTablet) && !mobileSidebarOpen
+            ? "-translate-x-full"
+            : "translate-x-0"
+        } bg-[#1F2937] bg-gradient-to-b from-[#1F2937] to-[#111827] shadow-xl border-r border-white/5`}
       >
         <div className="h-full flex flex-col">
           {/* Logo Section with Close Button */}
@@ -239,13 +244,15 @@ export default function Sidebar({
               {/* Logo */}
               {showLogo() && (
                 <div className="flex items-center space-x-2 sm:space-x-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary rounded-xl flex items-center justify-center">
                     <ShoppingCartIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
-                  <span className="text-white font-bold text-lg sm:text-xl">Smart POS</span>
+                  <span className="text-white font-bold text-lg sm:text-xl">
+                    Smart POS
+                  </span>
                 </div>
               )}
-              
+
               {/* Desktop toggle button - only visible on large screens (above 1024px) */}
               {!isMobile && !isTablet && (
                 <Button
@@ -299,13 +306,15 @@ export default function Sidebar({
                   href={item.href}
                   className={`flex items-center space-x-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl transition-all ${
                     isActive
-                      ? "bg-primary text-white shadow-lg shadow-primary/30"
+                      ? "bg-primary text-white shadow-lg shadow-primary/50"
                       : "text-gray-300 hover:bg-white/10 hover:text-white"
                   }`}
                   onClick={closeSidebar}
                 >
                   <item.icon className="w-5 h-5 flex-shrink-0" />
-                  {showNavText() && <span className="text-sm sm:text-base">{item.name}</span>}
+                  {showNavText() && (
+                    <span className="text-sm sm:text-base">{item.name}</span>
+                  )}
                 </Link>
               );
             })}
