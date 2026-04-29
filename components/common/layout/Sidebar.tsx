@@ -221,16 +221,17 @@ export default function Sidebar({
       {/* Overlay for mobile and tablet when sidebar is open */}
       {(isMobile || isTablet) && mobileSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
           onClick={closeSidebar}
         />
       )}
       
       <aside
-  className={`fixed top-0 left-0 z-50 h-screen transition-all duration-300 ${getSidebarWidth()} ${
-    (isMobile || isTablet) && !mobileSidebarOpen ? "-translate-x-full" : "translate-x-0"
-  } bg-[#1F2937] bg-gradient-to-b from-[#1F2937] to-[#111827] shadow-xl border-r border-white/5`}
->
+        className={`fixed top-0 left-0 z-50 h-screen transition-all duration-300 ${getSidebarWidth()} ${
+          (isMobile || isTablet) && !mobileSidebarOpen ? "-translate-x-full" : "translate-x-0"
+        } bg-[#1F2937] shadow-2xl`}
+        style={{ backgroundColor: "#1F2937", backgroundImage: "none" }}
+      >
         <div className="h-full flex flex-col">
           {/* Logo Section with Close Button */}
           <div className="p-4 sm:p-6 border-b border-white/10">
@@ -238,7 +239,7 @@ export default function Sidebar({
               {/* Logo */}
               {showLogo() && (
                 <div className="flex items-center space-x-2 sm:space-x-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary rounded-xl flex items-center justify-center">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg">
                     <ShoppingCartIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <span className="text-white font-bold text-lg sm:text-xl">Smart POS</span>
@@ -298,7 +299,7 @@ export default function Sidebar({
                   href={item.href}
                   className={`flex items-center space-x-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl transition-all ${
                     isActive
-                      ? "bg-primary text-white shadow-lg shadow-primary/50"
+                      ? "bg-primary text-white shadow-lg shadow-primary/30"
                       : "text-gray-300 hover:bg-white/10 hover:text-white"
                   }`}
                   onClick={closeSidebar}
