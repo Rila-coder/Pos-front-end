@@ -227,10 +227,10 @@ export default function Sidebar({
       )}
       
       <aside
-        className={`fixed top-0 left-0 z-50 h-screen transition-all duration-300 ${getSidebarWidth()} ${
-          (isMobile || isTablet) && !mobileSidebarOpen ? "-translate-x-full" : "translate-x-0"
-        } bg-gradient-to-b from-[#1F2937] to-[#111827] shadow-xl`}
-      >
+  className={`fixed top-0 left-0 z-50 h-screen transition-all duration-300 ${getSidebarWidth()} ${
+    (isMobile || isTablet) && !mobileSidebarOpen ? "-translate-x-full" : "translate-x-0"
+  } bg-[#1F2937] bg-gradient-to-b from-[#1F2937] to-[#111827] shadow-xl border-r border-white/5`}
+>
         <div className="h-full flex flex-col">
           {/* Logo Section with Close Button */}
           <div className="p-4 sm:p-6 border-b border-white/10">
