@@ -22,6 +22,7 @@ import {
   LogOut,
   ChevronDown,
   UserCircle,
+  Shapes,
 } from "lucide-react";
 import { Button } from "@/components/common/ui/Button";
 import { Avatar, AvatarFallback } from "@/components/common/ui/Avatar";
@@ -129,6 +130,7 @@ export default function Sidebar({
         { name: "Global POS", href: "/super-admin/pos", icon: ShoppingCart },
         { name: "Sales History", href: "/super-admin/sales-history", icon: History },
         { name: "All Products", href: "/super-admin/products", icon: Package },
+        { name: "Categories", href: "/super-admin/categories", icon: Shapes },
         { name: "All Customers", href: "/super-admin/customers", icon: Users },
         { name: "All Suppliers", href: "/super-admin/suppliers", icon: Truck },
         { name: "Global Inventory", href: "/super-admin/inventory", icon: Box },
@@ -160,6 +162,7 @@ export default function Sidebar({
         { name: "POS Register", href: "/staff/pos", icon: ShoppingCart },
         { name: "Sales History", href: "/staff/sales-history", icon: History },
         { name: "Products", href: "/staff/products", icon: Package },
+        { name: "Categories", href: "/staff/categories", icon: Shapes },
         { name: "Customers", href: "/staff/customers", icon: Users },
         { name: "Suppliers", href: "/staff/suppliers", icon: Truck },
       ];
@@ -170,6 +173,7 @@ export default function Sidebar({
       { name: "POS Register", href: "/admin/pos", icon: ShoppingCart },
       { name: "Sales History", href: "/admin/sales-history", icon: History },
       { name: "Products", href: "/admin/products", icon: Package },
+      { name: "Categories", href: "/admin/categories", icon: Shapes },
       { name: "Customers", href: "/admin/customers", icon: Users },
       { name: "Suppliers", href: "/admin/suppliers", icon: Truck },
       { name: "Inventory", href: "/admin/inventory", icon: Box },
